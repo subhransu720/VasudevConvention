@@ -1,19 +1,19 @@
 {
   "name": "Raj Palace & Convention",
   "short_name": "Raj Palace",
-  "description": "Premier venue for weddings, corporate events, and special occasions",
+  "description": "Premier wedding and event venue offering luxury facilities and professional services.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#8a2be2",
   "icons": [
     {
-      "src": "/icon-192x192.png",
+      "src": "/images/image.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icon-512x512.png",
+      "src": "/images/image.png",
       "sizes": "512x512",
       "type": "image/png"
     }

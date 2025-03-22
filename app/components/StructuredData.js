@@ -1,11 +1,6 @@
 import Script from 'next/script'
 
-interface StructuredDataProps {
-  type: string
-  data: any
-}
-
-export default function StructuredData({ type, data }: StructuredDataProps) {
+export default function StructuredData({ type, data }) {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': type,
