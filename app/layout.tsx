@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
+import StructuredData from './components/StructuredData';
 
 // Optimize font loading
 const playfair = Playfair_Display({
@@ -82,6 +83,27 @@ export const metadata: Metadata = {
   },
 };
 
+// Organization structured data
+const organizationData = {
+  name: 'Raj Palace & Convention',
+  url: 'https://rajpalace.com',
+  logo: 'https://rajpalace.com/images/image.png',
+  description: 'Premier wedding and event venue offering luxury facilities and professional services.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Your Street Address',
+    addressLocality: 'Your City',
+    addressRegion: 'Your State',
+    postalCode: 'Your Postal Code',
+    addressCountry: 'IN'
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+91-XXXXXXXXXX',
+    contactType: 'customer service'
+  }
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -93,6 +115,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <StructuredData type="Organization" data={organizationData} />
       </head>
       <body className={`${montserrat.className} antialiased`}>
         <main>{children}</main>
