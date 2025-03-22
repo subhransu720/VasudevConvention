@@ -5,35 +5,26 @@ import "./globals.css";
 // Optimize font loading
 const playfair = Playfair_Display({
   subsets: ["latin"],
-  display: "swap",
   variable: "--font-playfair",
-  preload: true,
-  adjustFontFallback: true,
+  display: "swap",
 });
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  display: "swap",
   variable: "--font-montserrat",
-  weight: ["300", "400", "500", "600", "700"],
-  preload: true,
-  adjustFontFallback: true,
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Raj Palace & Convention | Luxury Event Venue",
-  description: "Raj Palace & Convention - The perfect venue for weddings, corporate events, private parties, and all other ceremonies.",
-  keywords: "event venue, wedding venue, corporate events, luxury venue, convention center, Raj Palace",
+  title: "Raj Palace & Convention",
+  description: "Premier venue for weddings, corporate events, and special occasions",
   icons: {
     icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
   manifest: '/manifest.json',
-};
-
-export const viewport = {
-  width: "device-width",
-  initialScale: 1,
-  themeColor: "#ffffff",
+  viewport: 'width=device-width, initial-scale=1',
+  themeColor: '#8a2be2',
 };
 
 export default function RootLayout({
@@ -48,7 +39,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="antialiased min-h-screen bg-white">
+      <body className={`${montserrat.className} antialiased`}>
         <main>{children}</main>
       </body>
     </html>
