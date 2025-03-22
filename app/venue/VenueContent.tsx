@@ -24,7 +24,7 @@ const facilities: Facility[] = [
     name: 'Main Hall',
     description: 'Our spacious main hall is perfect for grand weddings, corporate events, and large gatherings.',
     icon: <FaBuilding className="text-white text-2xl" />,
-    image: '/images/stage1.jpeg',
+    image: '/images/optimized/wedding_stage.jpg',
     features: ['Air-conditioned', 'Stage with lighting', 'Sound system', 'Seating for 500+', 'Customizable decor'],
     capacity: 'Up to 1500 guests'
   },
@@ -119,11 +119,13 @@ const VenueContent = () => {
       {/* Hero Section */}
       <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
         <Image
-          src="/images/IMG_0307.jpg"
-          alt="Raj Palace Venue"
+          src="/images/optimized/IMG_0307.jpg"
+          alt="Raj Palace Venue - Luxury Event Space"
           fill
           className="object-cover"
           priority
+          sizes="100vw"
+          quality={90}
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4">
@@ -235,9 +237,11 @@ const VenueContent = () => {
               <div className="relative h-[300px] md:h-[400px]">
                 <Image
                   src={activeFacility.image}
-                  alt={activeFacility.name}
+                  alt={`${activeFacility.name} at Raj Palace & Convention - ${activeFacility.description}`}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 66vw"
+                  quality={85}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 
