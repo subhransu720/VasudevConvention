@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rajpalace.com'),
+  metadataBase: new URL('https://rajpalaceandconvention.com'),
   title: {
     default: 'Raj Palace & Convention | Premier Wedding & Event Venue',
     template: '%s | Raj Palace & Convention'
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://rajpalace.com',
+    url: 'https://rajpalaceandconvention.com',
     siteName: 'Raj Palace & Convention',
     title: 'Raj Palace & Convention | Premier Wedding & Event Venue',
     description: 'Your premier destination for weddings, corporate events, and special occasions. Luxury venues, professional services, and unforgettable experiences.',
@@ -88,10 +88,10 @@ export const metadata: Metadata = {
 const organizationData = {
   '@type': 'LocalBusiness',
   name: 'Raj Palace & Convention',
-  url: 'https://rajpalace.com',
-  logo: 'https://rajpalace.com/images/image.png',
+  url: 'https://rajpalaceandconvention.com',
+  logo: 'https://rajpalaceandconvention.com/images/image.png',
   description: 'Premier wedding and event venue offering luxury facilities and professional services.',
-  image: 'https://rajpalace.com/images/optimized/wedding_stage.jpg',
+  image: 'https://rajpalaceandconvention.com/images/optimized/wedding_stage.jpg',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Your Street Address',
@@ -106,8 +106,16 @@ const organizationData = {
 const websiteData = {
   '@type': 'WebSite',
   name: 'Raj Palace & Convention',
-  url: 'https://rajpalace.com',
-  description: 'Premier wedding and event venue offering luxury facilities and professional services.'
+  url: 'https://rajpalaceandconvention.com',
+  description: 'Premier wedding and event venue offering luxury facilities and professional services.',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://rajpalaceandconvention.com/search?q={search_term_string}'
+    },
+    'query-input': 'required name=search_term_string'
+  }
 };
 
 export default function RootLayout({

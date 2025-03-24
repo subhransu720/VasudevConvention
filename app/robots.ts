@@ -7,6 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/'],
     },
-    sitemap: 'https://rajpalace.com/sitemap.xml',
+    sitemap: 'https://rajpalaceandconvention.com/sitemap.xml',
+    host: 'https://rajpalaceandconvention.com'
   };
 } 

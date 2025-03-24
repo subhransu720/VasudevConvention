@@ -3,46 +3,46 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://rajpalace.com',
+      url: 'https://rajpalaceandconvention.com',
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,
     },
     {
-      url: 'https://rajpalace.com/about',
+      url: 'https://rajpalaceandconvention.com/about',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://rajpalace.com/services',
+      url: 'https://rajpalaceandconvention.com/services',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://rajpalace.com/venue',
+      url: 'https://rajpalaceandconvention.com/venue',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: 'https://rajpalace.com/gallery',
+      url: 'https://rajpalaceandconvention.com/gallery',
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: 'https://rajpalace.com/faq',
+      url: 'https://rajpalaceandconvention.com/faq',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: 'https://rajpalace.com/contact',
+      url: 'https://rajpalaceandconvention.com/contact',
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.8,
     },
   ];
 } 
