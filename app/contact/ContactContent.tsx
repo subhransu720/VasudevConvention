@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaInstagram, FaTwitter, FaArrowRight, FaWhatsapp, FaSms, FaYoutube } from 'react-icons/fa';
@@ -134,17 +133,17 @@ const ContactContent = () => {
     {
       icon: <FaPhone className="text-2xl text-white" />,
       title: "Phone",
-      details: ["9178080116", "9937142047", "9776272777"]
+      details: ["+91 9861171001, +917735014971"]
     },
     {
       icon: <FaEnvelope className="text-2xl text-white" />,
       title: "Email",
-      details:["rajpalaceandconvention@gmail.com"]
+      details:["Vasudevconvention@gmail.com"]
     },
     {
       icon: <FaMapMarkerAlt className="text-2xl text-white" />,
       title: "Address",
-      details: ["Samantarapur, near young phoenix public school, Bhubaneswar ,Odisha, India - 751002"]
+      details: ["plot no 120/2457, Lingipur chowk , Infront of Janani hospital, Bhubaneswar, Odisha 751002"]
     },
     {
       icon: <FaClock className="text-2xl text-white" />,
@@ -154,7 +153,7 @@ const ContactContent = () => {
   ];
 
   return (
-    <>
+    <div className="min-h-screen bg-[#f8f0e3]">
       <Navbar />
       <main className="pt-20">
         {/* Hero Section */}
@@ -182,7 +181,7 @@ const ContactContent = () => {
           <div className="relative h-[50vh] md:h-[60vh] w-full">
             <Image
               src="/images/entrygate.jpeg"
-              alt="Contact Raj Palace"
+              alt="Contact Vasudev Convention"
               fill
               className="object-cover"
               priority
@@ -243,7 +242,7 @@ const ContactContent = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
-                  href="https://wa.me/919178080116" 
+                  href="https://wa.me/919861171001" 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
@@ -253,17 +252,17 @@ const ContactContent = () => {
                     whileTap={{ scale: 0.95 }}
                   >
                     <FaWhatsapp className="text-xl" />
-                    <span>WhatsApp: 9178080116</span>
+                    <span>WhatsApp:919861171001</span>
                   </motion.button>
                 </a>
-                <a href="sms:+919178080116">
+                <a href="sms:+919861171001">
                   <motion.button
                     className="px-6 py-3 rounded-md bg-[#3498db] text-white font-semibold flex items-center gap-2 border-2 border-white/20"
                     whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(52, 152, 219, 0.6)" }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <FaSms className="text-xl" />
-                    <span>SMS: 9178080116</span>
+                    <span>SMS:919861171001</span>
                   </motion.button>
                 </a>
               </div>
@@ -491,11 +490,11 @@ const ContactContent = () => {
                 {/* Direct Contact Options */}
                 <div className="mt-8 pt-6 border-t border-[#d4af37]/30">
                   <h5 className="text-xl font-bold mb-4 text-[#d4af37]">Contact us directly:</h5>
-                  <p className="text-gray-300 mb-4">Reach us instantly via WhatsApp or SMS at: <span className="text-white font-semibold">+91 9178080116</span></p>
+                  <p className="text-gray-300 mb-4">Reach us instantly via WhatsApp or SMS at: <span className="text-white font-semibold">+91 9861171001</span></p>
                   
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a 
-                      href="https://wa.me/919178080116" 
+                      href="https://wa.me/9861171001" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex-1"
@@ -514,7 +513,7 @@ const ContactContent = () => {
                     </a>
                     
                     <a 
-                      href="sms:+919178080116" 
+                      href="sms:9861171001" 
                       className="flex-1"
                     >
                       <motion.button
@@ -542,7 +541,7 @@ const ContactContent = () => {
               >
                 <div className="h-[400px] bg-gray-200 rounded-lg overflow-hidden mb-6 shadow-xl border-2 border-[#d4af37]/30">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4133.799250041876!2d85.83982067564187!3d20.22487478123084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a7001bbf87ad%3A0x2acac52a7b7d3d47!2sRaj%20Palace!5e1!3m2!1sen!2sin!4v1742450996348!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3792.768562326388!2d85.8522917!3d20.2165596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a1004561a639%3A0xd34c94fa743c4bbf!2sVasudev%20Convention!5e1!3m2!1sen!2sin!4v1743077018500!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -670,8 +669,7 @@ const ContactContent = () => {
           </div>
         </section>
       </main>
-      <Footer />
-    </>
+    </div>
   );
 };
 

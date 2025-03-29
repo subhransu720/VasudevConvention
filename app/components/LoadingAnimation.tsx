@@ -99,29 +99,18 @@ const LoadingAnimation = () => {
         
         {/* Logo Animation */}
         <motion.div 
-          className="w-60 h-60 mx-auto mb-6 relative"
+          className="mx-auto mb-6 relative"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <Image 
-            src="/images/image.png" 
-            alt="Raj Palace Logo" 
+            src="/images/vasudev-logo.png" 
+            alt="Vasudev Convention Logo" 
             width={240} 
             height={240} 
             className="object-contain w-auto h-auto"
             style={{ height: 'auto' }}
-          />
-          
-          {/* Simplified glow effect */}
-          <motion.div 
-            className="absolute inset-0 rounded-full"
-            style={{ 
-              background: 'radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.7) 0%, transparent 70%)',
-              filter: 'blur(8px)'
-            }}
-            animate={{ rotate: 360 }}
-            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
           />
         </motion.div>
         
@@ -137,7 +126,7 @@ const LoadingAnimation = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          Raj Palace & Convention
+          Vasudev Convention
         </motion.h2>
         
         {/* Tagline */}

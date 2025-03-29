@@ -1,276 +1,189 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Link from 'next/link';
-import { useRef, useEffect, useState } from 'react';
-import { FaCheck, FaStar, FaGem, FaUsers, FaUtensils, FaWifi, FaQuoteLeft } from 'react-icons/fa';
-
-// Define particle type
-interface Particle {
-  id: number;
-  x: number;
-  y: number;
-  size: number;
-  duration: number;
-  delay: number;
-}
+import { FaCalendarAlt, FaMedal, FaHandshake, FaStar, FaAward } from 'react-icons/fa';
 
 const About = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 1, 1, 0]);
-  
-  // Floating particles state with proper typing
-  const [particles, setParticles] = useState<Particle[]>([]);
-  
-  // Generate particles on component mount
-  useEffect(() => {
-    const newParticles = Array.from({ length: 15 }, (_, i) => ({
-      id: i,
-      x: Math.floor(Math.random() * 100),
-      y: Math.floor(Math.random() * 100),
-      size: Math.floor(Math.random() * 8) + 2,
-      duration: Math.floor(Math.random() * 20) + 10,
-      delay: Math.random() * 5
-    }));
-    setParticles(newParticles);
-  }, []);
-
-  // Define luxury features with icons and descriptions
-  const luxuryFeatures = [
-    {
-      icon: <FaGem className="text-white text-xl" />,
-      title: "Luxurious Venues",
-      description: "Elegant spaces designed for memorable events",
-      color: "from-purple-600 to-indigo-600"
-    },
-    {
-      icon: <FaUsers className="text-white text-xl" />,
-      title: "Professional Staff",
-      description: "Dedicated team to ensure flawless execution",
-      color: "from-indigo-600 to-blue-600"
-    },
-    {
-      icon: <FaUtensils className="text-white text-xl" />,
-      title: "Exquisite Catering",
-      description: "Delectable cuisine to delight your guests",
-      color: "from-blue-600 to-purple-600"
-    },
-    {
-      icon: <FaWifi className="text-white text-xl" />,
-      title: "Modern Amenities",
-      description: "State-of-the-art facilities for your convenience",
-      color: "from-purple-500 to-pink-500"
-    }
-  ];
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
-
   return (
-    <section className="section-padding bg-[#e6e6fa] relative overflow-hidden" id="about" ref={containerRef}>
-      {/* Animated background particles */}
-      {particles.map(particle => (
-        <motion.div
-          key={particle.id}
-          className="absolute rounded-full bg-purple-500/10"
-          style={{
-            width: particle.size,
-            height: particle.size,
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-          }}
+    <section className="py-20 bg-gradient-to-b from-white dark:from-gray-900 via-purple-50/30 dark:via-gray-800 to-white dark:to-gray-900 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-purple-200/30 to-pink-200/30 dark:from-purple-900/30 dark:to-pink-900/30 blur-3xl"
           animate={{
-            y: [0, -30, 0],
-            x: [0, particle.id % 2 === 0 ? 20 : -20, 0],
-            opacity: [0.1, 0.3, 0.1]
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.4, 0.2]
           }}
           transition={{
-            duration: particle.duration,
-            repeat: Infinity,
-            delay: particle.delay,
+            duration: 15,
+            repeat: Infinity, 
             ease: "easeInOut"
           }}
         />
-      ))}
+        <motion.div 
+          className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-blue-200/30 to-indigo-200/30 dark:from-blue-900/30 dark:to-indigo-900/30 blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.4, 0.2]
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
 
-      <div className="container-custom">
+      <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Image with parallax effect */}
-          <motion.div 
-            className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-xl"
+          {/* Left Column - Image and Decorative Elements */}
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            style={{ y }}
+            className="relative"
           >
-            <Image
-              src="/images/stage1.jpeg"
-              alt="Raj Palace Interior"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#4b0082]/70 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 bg-purple-gradient text-white py-3 px-6 font-medium">
-              Established in 2022
+            <div className="relative h-[500px] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/IMG_1101.jpg"
+                alt="Vasudev Convention Interior"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             </div>
             
-            {/* Floating Elements with enhanced animations */}
-            <motion.div 
-              className="absolute top-10 right-10 bg-white/20 backdrop-blur-sm p-3 rounded-full"
+            {/* Floating Decorative Elements */}
+            <motion.div
+              className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg"
               initial={{ scale: 0, rotate: -45 }}
               whileInView={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 0.5, delay: 0.5, type: "spring" }}
+              transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.2, rotate: 15 }}
+              whileHover={{ scale: 1.1, rotate: 5 }}
             >
-              <FaStar className="text-yellow-400 text-xl" />
+              <FaAward className="text-white text-3xl" />
             </motion.div>
-            
-            <motion.div 
-              className="absolute bottom-20 right-10 bg-white/20 backdrop-blur-sm p-4 rounded-full"
+
+            <motion.div
+              className="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center shadow-lg"
               initial={{ scale: 0, rotate: 45 }}
               whileInView={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 0.5, delay: 0.7, type: "spring" }}
+              transition={{ duration: 0.5, delay: 0.3, type: "spring" }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.2, rotate: -15 }}
+              whileHover={{ scale: 1.1, rotate: -5 }}
             >
-              <FaStar className="text-yellow-400 text-xl" />
+              <FaStar className="text-white text-3xl" />
             </motion.div>
-            
-            {/* New decorative element */}
+
+            {/* Modern Badge */}
             <motion.div
-              className="absolute top-1/2 left-10 transform -translate-y-1/2 bg-white/10 backdrop-blur-sm p-5 rounded-full"
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.9, type: "spring" }}
+              className="absolute bottom-8 right-8 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-lg backdrop-blur-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(138, 43, 226, 0.6)" }}
             >
-              <FaQuoteLeft className="text-white/80 text-2xl" />
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center">
+                  <FaMedal className="text-white text-xl" />
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-600 dark:text-gray-300">Established</div>
+                  <div className="text-lg font-bold text-gray-800 dark:text-white">Since 2025</div>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
 
-          {/* Content with enhanced animations */}
+          {/* Right Column - Content */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="space-y-8"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="mb-6"
-            >
+            <div>
               <motion.h2 
-                className="heading-secondary text-[#4b0082] mb-2"
-                whileHover={{ scale: 1.05, x: 5 }}
+                className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500"
+                whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 About Us
               </motion.h2>
-              <motion.h3 
-                className="heading-tertiary bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text mb-6"
-                whileHover={{ scale: 1.02 }}
+              <motion.p 
+                className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
               >
-                The Premier Destination for Memorable Events
-              </motion.h3>
-            </motion.div>
-            
-            <motion.p 
-              className="mb-4 text-gray-700"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Raj Palace & Convention is a premier venue for all your special occasions. Located in the heart of the city, we offer elegant spaces, exceptional service, and a team dedicated to making your event unforgettable.
-            </motion.p>
-            
-            <motion.p 
-              className="mb-6 text-gray-700"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              From weddings and corporate events to private parties and celebrations, our versatile venues can accommodate gatherings of all sizes. Our attention to detail and commitment to excellence ensure that every event exceeds expectations.
-            </motion.p>
-            
-            {/* Feature cards with enhanced animations */}
-            <motion.div 
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {luxuryFeatures.map((feature, index) => (
-                <motion.div 
-                  key={index}
-                  className={`bg-gradient-to-r ${feature.color} p-4 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl`}
-                  variants={itemVariants}
-                  whileHover={{ 
-                    y: -5,
-                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                  }}
-                >
-                  <div className="flex items-start space-x-3">
-                    <div className="bg-white/20 p-3 rounded-full backdrop-blur-sm">
-                      {feature.icon}
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold text-lg mb-1">{feature.title}</h4>
-                      <p className="text-white/80 text-sm">{feature.description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-            
+               We are your premier destination for luxury events and unforgettable celebrations. Combining elegance with innovation, we craft bespoke experiences tailored to your unique vision. From opulent weddings to exclusive corporate gatherings, every event is designed with precision, sophistication, and a touch of grandeur. Let us turn your special moments into timeless memories.
+              </motion.p>
+            </div>
+
+            {/* Feature Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center text-white mb-4">
+                  <FaCalendarAlt className="text-xl" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Perfect Timing</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Expertly planned events that run smoothly from start to finish.</p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center text-white mb-4">
+                  <FaMedal className="text-xl" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Premium Quality</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Luxury amenities and top-notch service for your special day.</p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center text-white mb-4">
+                  <FaHandshake className="text-xl" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Personal Touch</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Dedicated support to bring your vision to life.</p>
+              </motion.div>
+            </div>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
               viewport={{ once: true }}
+              className="pt-4"
             >
-              <Link href="/contact">
-                <motion.button 
-                  className="btn-primary bg-gradient-to-r from-purple-600 to-indigo-600 text-white"
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(138, 43, 226, 0.6)" }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Contact Us
-                </motion.button>
-              </Link>
+              <motion.button
+                className="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Learn More About Us
+              </motion.button>
             </motion.div>
           </motion.div>
         </div>
@@ -278,6 +191,5 @@ const About = () => {
     </section>
   );
 };
-
 
 export default About; 

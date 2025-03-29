@@ -9,39 +9,57 @@ import { FaSearch, FaTimes } from 'react-icons/fa';
 const galleryImages = [
   {
     id: 1,
-    src: '/images/weddingBedi.png',
+    src: '/images/IMG_1058.jpg',
     category: 'Wedding',
-    title: 'Elegant Wedding Setup',
+    title: 'Elegant Wedding Hall',
   },
   {
     id: 2,
-    src: '/images/corporate.png',
+    src: '/images/IMG_1036.jpg',
     category: 'Corporate',
-    title: 'Business Conference',
+    title: 'Business Conference hall',
   },
   {
     id: 3,
-    src: '/images/birthday.png',
+    src: '/images/birthdayorg.png',
     category: 'Party',
     title: 'Birthday Celebration',
   },
   {
     id: 4,
-    src: '/images/wedding_stage.jpg',
+    src: '/images/IMG_1051.jpg',
     category: 'Wedding',
     title: 'Wedding Reception',
   },
   {
     id: 5,
-    src: '/images/corporate2.png',
+    src: '/images/IMG_1017.jpg',
     category: 'Corporate',
     title: 'Corporate Dinner',
   },
   {
     id: 6,
-    src: '/images/kitty.png',
+    src: '/images/image copy 4.png',
     category: 'Party',
     title: 'Private Party',
+  },
+  {
+    id: 7,
+    src: '/images/IMG_1086.jpg',
+    category: 'Entrance',
+    title: 'Elegant Entrance',
+  },
+  {
+    id: 8,
+    src: '/images/IMG_1032.jpg',
+    category: 'Party Hall',
+    title: 'HALL',
+  },
+  {
+    id: 9,
+    src: '/images/IMG_1082.jpg',
+    category: 'Rooms',
+    title: 'Luxury Rooms',
   },
 ];
 
@@ -78,7 +96,13 @@ const Gallery = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="heading-secondary text-[#8b0000] mb-2">Photo Gallery</h2>
+            <motion.h2 
+              className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              Our Gallery
+            </motion.h2>
             <h3 className="heading-tertiary text-[#f20f0f] mb-6">Glimpses of Our Memorable Events</h3>
             <p className="max-w-3xl mx-auto text-gray-700 mb-8">
               Browse through our gallery to see the beautiful events we've hosted at Raj Palace & Convention.

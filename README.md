@@ -1,87 +1,79 @@
-# Raj Palace & Convention Website
+# Vasudev Convention Website
 
-A modern, responsive website for Raj Palace & Convention, built with Next.js 14, TypeScript, and Tailwind CSS.
+A modern, responsive website for Vasudev Convention, built with Next.js 14, TypeScript, and Tailwind CSS.
 
 ## Features
 
 - 🎨 Modern and responsive design
-- ⚡ Fast performance with Next.js
+- ⚡ Fast page loads with Next.js
 - 📱 Mobile-first approach
-- 🎭 Beautiful animations with Framer Motion
-- 🎨 Custom styling with Tailwind CSS
-- 📝 TypeScript for type safety
+- 🎭 Smooth animations with Framer Motion
+- 📸 Optimized image loading
+- 🔍 SEO optimized
+- 📞 Contact functionality
+- 📱 WhatsApp integration
+- 📧 Email integration
+- 📱 Mobile-friendly navigation
+
+## Tech Stack
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- React Icons
+- Next.js Image Optimization
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 18.17 or later
-- npm or yarn
-
-### Installation
-
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/raj-palace-website.git
-cd raj-palace-website
+git clone https://github.com/yourusername/vasudev-convention.git
 ```
 
 2. Install dependencies:
 ```bash
+cd vasudev-convention
 npm install
-# or
-yarn install
 ```
 
-3. Create a `.env` file:
-```bash
-cp .env.example .env
-```
-
-4. Update the `.env` file with your configuration
-
-5. Run the development server:
+3. Run the development server:
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Deployment
 
 This project is configured for deployment on Vercel:
 
 1. Push your code to GitHub
-2. Import your repository on Vercel
-3. Configure your environment variables
-4. Deploy!
+2. Connect your repository to Vercel
+3. Deploy!
 
-## Project Structure
+## Environment Variables
 
-```
-my-app/
-├── app/                    # Next.js 14 app directory
-│   ├── components/        # Reusable components
-│   ├── about/            # About page
-│   ├── contact/          # Contact page
-│   ├── gallery/          # Gallery page
-│   └── faq/              # FAQ page
-├── public/               # Static files
-│   └── images/          # Image assets
-├── styles/              # Global styles
-└── types/               # TypeScript type definitions
+Create a `.env.local` file in the root directory with the following variables:
+
+```env
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 ```
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+
+Vasudev Convention - [vasudevconvention25@gmail.com](mailto:vasudevconvention25@gmail.com)
+
+Website: [https://www.vasudevconvention.com](https://www.vasudevconvention.com)

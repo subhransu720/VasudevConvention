@@ -3,8 +3,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 interface FAQItem {
   question: string;
@@ -19,7 +17,7 @@ const FAQContent = () => {
   const faqItems: FAQItem[] = [
     {
       question: "What is the capacity of your venue?",
-      answer: "Our main hall can accommodate up to 1000 guests for a reception-style event and 500 guests for a seated dinner. We also have smaller halls that can accommodate 200-300 guests. Our outdoor garden area can host up to 1500 guests.",
+      answer: "Our main hall can accommodate up to 500 guests for a reception-style event and 400 guests for a seated dinner. We also have smaller halls that can accommodate 100 guests. Our outdoor garden area can host up to 700 guests.",
       category: "venue"
     },
     {
@@ -59,7 +57,7 @@ const FAQContent = () => {
     },
     {
       question: "What is your cancellation policy?",
-      answer: "If you cancel more than 90 days before the event, 70% of the booking amount is refundable. For cancellations between 60-90 days, 50% is refundable. For cancellations less than 60 days before the event, the booking amount is non-refundable.",
+      answer: " the booking amount is non-refundable.",
       category: "booking"
     },
     {
@@ -85,147 +83,142 @@ const FAQContent = () => {
   };
   
   return (
-    <>
-      <Navbar />
-      <main className="pt-20 relative">
-        {/* Hero Section with Bubble Animation */}
-        <section className="relative h-[40vh] min-h-[300px] bg-gradient-to-b from-blue-900 to-indigo-900 flex items-center justify-center overflow-hidden">
-          
-          <div className="container-custom relative z-10 text-center">
-            <motion.h1 
-              className="text-4xl md:text-5xl font-bold text-white mb-4"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Frequently Asked Questions
-            </motion.h1>
-            <motion.p 
-              className="text-xl text-blue-100 max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Find answers to common questions about our venue and services
-            </motion.p>
-            <motion.p 
-              className="mt-6 text-blue-200 font-medium"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-            >
-             
-            </motion.p>
-          </div>
-        </section>
-        
-        {/* FAQ Content */}
-        <section className="py-16 bg-gradient-to-b from-indigo-50 to-white">
-          <div className="container-custom">
-            {/* Category Tabs */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {categories.map((category) => (
-                <motion.button
-                  key={category.id}
-                  className={`px-6 py-3 rounded-full text-sm md:text-base font-medium transition-all ${
-                    activeCategory === category.id
-                      ? 'bg-indigo-600 text-white shadow-lg'
-                      : 'bg-white text-indigo-600 border border-indigo-200 hover:bg-indigo-50'
-                  }`}
-                  onClick={() => setActiveCategory(category.id)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {category.name}
-                </motion.button>
-              ))}
-            </div>
-            
-            {/* FAQ Items */}
-            <div className="max-w-4xl mx-auto">
-              <AnimatePresence>
-                {filteredFAQs.length === 0 ? (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="text-center py-8"
-                  >
-                    <FaChevronUp className="text-4xl text-indigo-300 mx-auto mb-4" />
-                    <p className="text-gray-600">No questions found in this category.</p>
-                  </motion.div>
-                ) : (
-                  filteredFAQs.map((faq, index) => (
-                    <motion.div
-                      key={`${activeCategory}-${index}`}
-                      className="mb-4 bg-white rounded-lg shadow-md overflow-hidden"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      layout
-                    >
-                      <motion.button
-                        className="w-full px-6 py-4 text-left flex justify-between items-center"
-                        onClick={() => toggleFAQ(index)}
-                        whileHover={{ backgroundColor: 'rgba(238, 242, 255, 0.5)' }}
-                      >
-                        <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
-                        <motion.div
-                          animate={{ rotate: activeIndex === index ? 180 : 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <FaChevronDown className="text-indigo-500" />
-                        </motion.div>
-                      </motion.button>
-                      
-                      <AnimatePresence>
-                        {activeIndex === index && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="px-6 py-4 border-t border-gray-100">
-                              <p className="text-gray-600">{faq.answer}</p>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </motion.div>
-                  ))
-                )}
-              </AnimatePresence>
-            </div>
-            
-            {/* Still Have Questions */}
-            <motion.div 
-              className="mt-16 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Still Have Questions?</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-                If you couldn't find the answer to your question, please feel free to contact us directly.
-                Our team is always ready to help you.
-              </p>
-              <motion.a
-                href="/contact"
-                className="inline-block px-8 py-3 bg-indigo-600 text-white font-medium rounded-full shadow-lg"
-                whileHover={{ scale: 1.05, backgroundColor: '#4338ca' }}
+    <main className="pt-20 relative">
+      {/* Hero Section with Bubble Animation */}
+      <section className="relative h-[40vh] min-h-[300px] bg-gradient-to-b from-blue-900 to-indigo-900 flex items-center justify-center overflow-hidden">
+        <div className="container-custom relative z-10 text-center">
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Frequently Asked Questions
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-blue-100 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Find answers to common questions about our venue and services
+          </motion.p>
+          <motion.p 
+            className="mt-6 text-blue-200 font-medium"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+          >
+           
+          </motion.p>
+        </div>
+      </section>
+      
+      {/* FAQ Content */}
+      <section className="py-20">
+        <div className="container-custom">
+          {/* Category Tabs */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {categories.map((category) => (
+              <motion.button
+                key={category.id}
+                className={`px-6 py-3 rounded-full text-sm md:text-base font-medium transition-all ${
+                  activeCategory === category.id
+                    ? 'bg-indigo-600 text-white shadow-lg'
+                    : 'bg-white text-indigo-600 border border-indigo-200 hover:bg-indigo-50'
+                }`}
+                onClick={() => setActiveCategory(category.id)}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Contact Us
-              </motion.a>
-            </motion.div>
+                {category.name}
+              </motion.button>
+            ))}
           </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+          
+          {/* FAQ Items */}
+          <div className="max-w-4xl mx-auto">
+            <AnimatePresence>
+              {filteredFAQs.length === 0 ? (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="text-center py-8"
+                >
+                  <FaChevronUp className="text-4xl text-indigo-300 mx-auto mb-4" />
+                  <p className="text-gray-600">No questions found in this category.</p>
+                </motion.div>
+              ) : (
+                filteredFAQs.map((faq, index) => (
+                  <motion.div
+                    key={`${activeCategory}-${index}`}
+                    className="mb-4 bg-white rounded-lg shadow-md overflow-hidden"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    layout
+                  >
+                    <motion.button
+                      className="w-full px-6 py-4 text-left flex justify-between items-center"
+                      onClick={() => toggleFAQ(index)}
+                      whileHover={{ backgroundColor: 'rgba(238, 242, 255, 0.5)' }}
+                    >
+                      <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
+                      <motion.div
+                        animate={{ rotate: activeIndex === index ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <FaChevronDown className="text-indigo-500" />
+                      </motion.div>
+                    </motion.button>
+                    
+                    <AnimatePresence>
+                      {activeIndex === index && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 py-4 border-t border-gray-100">
+                            <p className="text-gray-600">{faq.answer}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ))
+              )}
+            </AnimatePresence>
+          </div>
+          
+          {/* Still Have Questions */}
+          <motion.div 
+            className="mt-16 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Still Have Questions?</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+              If you couldn't find the answer to your question, please feel free to contact us directly.
+              Our team is always ready to help you.
+            </p>
+            <motion.a
+              href="/contact"
+              className="inline-block px-8 py-3 bg-indigo-600 text-white font-medium rounded-full shadow-lg"
+              whileHover={{ scale: 1.05, backgroundColor: '#4338ca' }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contact Us
+            </motion.a>
+          </motion.div>
+        </div>
+      </section>
+    </main>
   );
 };
 

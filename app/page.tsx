@@ -1,12 +1,13 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Services from './components/Services';
 import Facilities from './components/Facilities';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
 import LuxuryFeatures from './components/LuxuryFeatures';
+import ExperienceExcellence from './components/ExperienceExcellence';
+import ServicesCopy from './components/ServicesCopy';
+import FloatingButtons from './components/FloatingButtons';
 
 export default function Home() {
   return (
@@ -14,13 +15,13 @@ export default function Home() {
       <Navbar />
       <Hero />
       <LuxuryFeatures />
-      
+      <ExperienceExcellence />
+      <ServicesCopy />
       <Facilities />
       <About />
-      <Services />
       <Gallery />
       <Contact />
-      <Footer />
+      <FloatingButtons />
     </main>
   );
 }

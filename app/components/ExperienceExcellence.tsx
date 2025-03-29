@@ -1,346 +1,180 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaStar, FaGem, FaAward, FaHeart, FaGlassCheers, FaHandshake } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaUsers, FaCalendarAlt, FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaWifi, FaParking, FaAccessibleIcon, FaUtensils, FaMusic, FaCamera, FaGlassCheers, FaVideo, FaMicrophone, FaChair, FaTable, FaCouch, FaDoorOpen, FaShieldAlt, FaUserTie, FaHandshake, FaStar, FaCheckCircle, FaHeart, FaMedal } from 'react-icons/fa';
+import Image from 'next/image';
 
-// Define experience type
-interface Experience {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  color: string;
-  bgColor: string;
-  shadowColor: string;
-}
+const features = [
+  {
+    icon: <FaUsers className="text-4xl" />,
+    title: "Expert Event Team",
+    description: "Our experienced event coordinators ensure flawless execution of your special occasions.",
+    color: "from-blue-500 to-cyan-500"
+  },
+  {
+    icon: <FaGlassCheers className="text-4xl" />,
+    title: "Premium Catering",
+    description: "Exquisite culinary experiences with customizable menus for every occasion.",
+    color: "from-purple-500 to-pink-500"
+  },
+  {
+    icon: <FaVideo className="text-4xl" />,
+    title: "State-of-the-Art Technology",
+    description: "Modern audio-visual equipment and high-speed connectivity for seamless events.",
+    color: "from-orange-500 to-red-500"
+  },
+  {
+    icon: <FaMedal className="text-4xl" />,
+    title: "Award-Winning Service",
+    description: "Recognized for excellence in hospitality and event management.",
+    color: "from-green-500 to-emerald-500"
+  }
+];
 
-const ExperienceExcellence = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  
-  // Define experiences with icons and descriptions
-  const experiences: Experience[] = [
-    {
-      icon: <FaStar className="text-3xl" />,
-      title: "Premium Service",
-      description: "Personalized attention to every detail of your event",
-      color: "from-amber-500 to-yellow-400",
-      bgColor: "bg-gradient-to-br from-amber-50 to-yellow-50",
-      shadowColor: "rgba(245, 158, 11, 0.4)"
-    },
-    {
-      icon: <FaGem className="text-3xl" />,
-      title: "Luxury Experience",
-      description: "Elegant settings and sophisticated ambiance for your guests",
-      color: "from-indigo-500 to-blue-400",
-      bgColor: "bg-gradient-to-br from-indigo-50 to-blue-50",
-      shadowColor: "rgba(99, 102, 241, 0.4)"
-    },
-    {
-      icon: <FaAward className="text-3xl" />,
-      title: "Award-Winning Venue",
-      description: "Recognized for excellence in hospitality and event management",
-      color: "from-purple-500 to-violet-400",
-      bgColor: "bg-gradient-to-br from-purple-50 to-violet-50",
-      shadowColor: "rgba(139, 92, 246, 0.4)"
-    },
-    {
-      icon: <FaHeart className="text-3xl" />,
-      title: "Memorable Moments",
-      description: "Creating unforgettable experiences for you and your guests",
-      color: "from-rose-500 to-pink-400",
-      bgColor: "bg-gradient-to-br from-rose-50 to-pink-50",
-      shadowColor: "rgba(244, 63, 94, 0.4)"
-    },
-    {
-      icon: <FaGlassCheers className="text-3xl" />,
-      title: "Celebration Expertise",
-      description: "Specialists in making every celebration truly special",
-      color: "from-teal-500 to-emerald-400",
-      bgColor: "bg-gradient-to-br from-teal-50 to-emerald-50",
-      shadowColor: "rgba(20, 184, 166, 0.4)"
-    },
-    {
-      icon: <FaHandshake className="text-3xl" />,
-      title: "Dedicated Team",
-      description: "Professional staff committed to exceeding your expectations",
-      color: "from-orange-500 to-red-400",
-      bgColor: "bg-gradient-to-br from-orange-50 to-red-50",
-      shadowColor: "rgba(249, 115, 22, 0.4)"
-    }
-  ];
+const stats = [
+  { number: "100+", label: "Events Hosted", icon: <FaCalendarAlt className="text-3xl" /> },
+  { number: "500+", label: "Happy Clients", icon: <FaHeart className="text-3xl" /> },
+  { number: "98%", label: "Client Satisfaction", icon: <FaStar className="text-3xl" /> },
+  { number: "24/7", label: "Support Available", icon: <FaClock className="text-3xl" /> }
+];
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3
-      }
-    }
-  };
+const testimonials = [
+  {
+    name: "Priya Sharma",
+    role: "Wedding Planner",
+    image: "/images/testimonial1.jpg",
+    text: "The attention to detail and professional service made our client's wedding truly magical.",
+    rating: 5
+  },
+  {
+    name: "Rajesh Kumar",
+    role: "Corporate Event Manager",
+    image: "/images/testimonial2.jpg",
+    text: "The technical support and catering services are top-notch. Perfect for our annual meetings.",
+    rating: 5
+  },
+  {
+    name: "Anjali Patel",
+    role: "Event Coordinator",
+    image: "/images/testimonial3.jpg",
+    text: "The team's expertise and dedication ensure every event is executed flawlessly.",
+    rating: 5
+  }
+];
 
-  const experienceCardVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: (i: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: 0.2 + (i * 0.1),
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }),
-    hover: {
-      y: -15,
-      scale: 1.05,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const iconVariants = {
-    hidden: { scale: 0, rotate: -30 },
-    visible: { 
-      scale: 1, 
-      rotate: 0,
-      transition: { 
-        type: "spring", 
-        stiffness: 260, 
-        damping: 20,
-        delay: 0.1
-      } 
-    },
-    hover: { 
-      scale: 1.2,
-      rotate: 5,
-      transition: { 
-        type: "spring", 
-        stiffness: 400, 
-        damping: 10 
-      } 
-    }
-  };
-
+export default function ExperienceExcellence() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-[#fff8f0] relative overflow-hidden" ref={containerRef}>
-      {/* Decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          className="absolute top-20 right-10 w-64 h-64 rounded-full bg-gradient-to-r from-gold-300/20 to-amber-300/20 blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 30, 0],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        
-        <motion.div 
-          className="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-gradient-to-r from-indigo-300/20 to-purple-300/20 blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -30, 0],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        
-        <motion.div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-r from-rose-300/10 to-pink-300/10 blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.3, 0.1]
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      </div>
-
-      <div className="container-custom relative z-10">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <motion.div
-            className="inline-block mb-4"
-            whileHover={{ scale: 1.05, rotate: 2 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <div className="relative">
-              <h2 className="heading-secondary text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-600 mb-2">
-                Experience Excellence
-              </h2>
-              <motion.div 
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-amber-600 to-orange-600 rounded-full"
-                initial={{ width: "0%", left: "50%" }}
-                whileInView={{ width: "100%", left: "0%" }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: true }}
-              />
-            </div>
-          </motion.div>
-          
-          <motion.h3 
-            className="heading-tertiary text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-600 mb-6"
-            whileHover={{ scale: 1.02 }}
-          >
-            Where Every Event Becomes Extraordinary
-          </motion.h3>
-          
-          <motion.p 
-            className="text-gray-700 max-w-3xl mx-auto"
+    <section className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+      <div className="container-custom">
+        {/* Main Features */}
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            At Raj Palace & Convention, we pride ourselves on delivering exceptional experiences that exceed expectations and create lasting memories.
+            Why Choose Us
+          </motion.h2>
+          <motion.p 
+            className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Experience excellence in every aspect of your event with our comprehensive services and dedicated team.
           </motion.p>
-        </motion.div>
-        
-        {/* Experience Cards */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {experiences.map((experience, index) => (
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+          {features.map((feature, index) => (
             <motion.div
               key={index}
-              custom={index}
-              variants={experienceCardVariants}
-              whileHover="hover"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`${experience.bgColor} rounded-xl overflow-hidden transform transition-all duration-300`}
-              style={{ 
-                y: index % 2 === 0 ? y : undefined,
-                boxShadow: `0 10px 30px -5px ${experience.shadowColor}`
-              }}
+              whileHover={{ scale: 1.02 }}
             >
-              <div className={`h-3 bg-gradient-to-r ${experience.color}`}></div>
-              <div className="p-8">
-                <div className="flex items-start gap-5">
-                  <motion.div 
-                    className={`w-16 h-16 rounded-full bg-gradient-to-br ${experience.color} flex items-center justify-center text-white shadow-lg`}
-                    variants={iconVariants}
-                    whileHover="hover"
-                  >
-                    {experience.icon}
-                    <motion.div 
-                      className="absolute inset-0 rounded-full bg-white/30"
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0, 0.3, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.2,
-                      }}
-                    />
-                  </motion.div>
-                  
-                  <div>
-                    <motion.h3 
-                      className="text-xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-gray-800 to-gray-600"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      {experience.title}
-                    </motion.h3>
-                    <p className="text-gray-600">{experience.description}</p>
-                  </div>
+              <div className={`w-16 h-16 mx-auto rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center text-white mb-4`}>
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Stats Section */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-4xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500">
+                {stat.number}
+              </div>
+              <div className="text-gray-600 dark:text-gray-300">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Testimonials */}
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Client Testimonials
+          </motion.h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                
-                {/* Animated highlight */}
-                <motion.div 
-                  className={`w-full h-1 mt-6 bg-gradient-to-r ${experience.color} rounded-full opacity-50`}
-                  animate={{
-                    scaleX: [0, 1, 0],
-                    opacity: [0, 0.5, 0],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: index * 0.3,
-                    ease: "easeInOut"
-                  }}
-                />
-                
-                {/* Animated dots */}
-                <div className="flex justify-end mt-4">
-                  {[...Array(3)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className={`w-2 h-2 rounded-full bg-gradient-to-r ${experience.color} ml-1`}
-                      animate={{
-                        scale: [1, 1.5, 1],
-                        opacity: [0.3, 0.7, 0.3],
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        delay: i * 0.3,
-                        ease: "easeInOut"
-                      }}
-                    />
-                  ))}
+                <div>
+                  <h3 className="font-semibold">{testimonial.name}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{testimonial.role}</p>
                 </div>
+              </div>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">{testimonial.text}</p>
+              <div className="flex gap-1">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <FaStar key={i} className="text-yellow-400" />
+                ))}
               </div>
             </motion.div>
           ))}
-        </motion.div>
-        
-        {/* Bottom decoration */}
-        <motion.div 
-          className="mt-16 flex justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <motion.div 
-            className="w-24 h-1 bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 rounded-full"
-            animate={{
-              width: ["6rem", "12rem", "6rem"],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        </motion.div>
+        </div>
       </div>
     </section>
   );
-};
-
-export default ExperienceExcellence; 
+} 

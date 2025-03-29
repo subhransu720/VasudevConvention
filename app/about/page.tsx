@@ -1,323 +1,254 @@
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+'use client';
+
+import { motion } from 'framer-motion';
+import { FaUsers, FaCalendarAlt, FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
 import Image from 'next/image';
-import { FaCheck, FaUsers, FaCalendarAlt, FaMedal, FaHandshake, FaBed, FaUtensils, FaWifi, FaParking, FaAccessibleIcon } from 'react-icons/fa';
+import Navbar from '../components/Navbar';
 
-export const metadata = {
-  title: 'About Us | Raj Palace & Convention',
-  description: 'Learn about Raj Palace & Convention - our history, mission, and values.',
-};
+const AboutPage = () => {
+  const stats = [
+    { number: "1+", label: "Years Experience", icon: <FaCalendarAlt className="text-4xl" /> },
+    { number: "100+", label: "Events Hosted", icon: <FaUsers className="text-4xl" /> },
+    { number: "500+", label: "Happy Clients", icon: <FaUsers className="text-4xl" /> },
+    { number: "24/7", label: "Support", icon: <FaClock className="text-4xl" /> }
+  ];
 
-export default function AboutPage() {
+  const features = [
+    {
+      title: "Premium Venues",
+      description: "State-of-the-art facilities with modern amenities and elegant interiors.",
+      icon: "🏛️"
+    },
+    {
+      title: "Expert Team",
+      description: "Professional event planners and staff dedicated to your success.",
+      icon: "👥"
+    },
+    {
+      title: "Custom Solutions",
+      description: "Tailored packages to meet your specific event requirements.",
+      icon: "✨"
+    },
+    {
+      title: "Quality Service",
+      description: "Uncompromising commitment to excellence in every detail.",
+      icon: "⭐"
+    }
+  ];
+
   return (
     <main>
       <Navbar />
-      
-      {/* Hero Section */}
-      <div className="relative h-[50vh] md:h-[60vh] w-full">
-        <Image
-          src="/images/IMG_0341.jpg"
-          alt="About Raj Palace"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-          <div className="text-center text-white">
-            <h1 className="heading-primary mb-4">About Us</h1>
-            <p className="text-xl max-w-3xl mx-auto px-4">
-              Learn about our journey, mission, and commitment to excellence
-            </p>
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+        {/* Hero Section */}
+        <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/IMG_1036.jpg"
+              alt="Basudev Convention"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
           </div>
-        </div>
+          
+          <motion.div 
+            className="relative z-10 text-center text-white px-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.h1 
+              className="text-5xl md:text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              About Basudev Convention
+            </motion.h1>
+            <motion.p 
+              className="text-xl md:text-2xl max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Your Premier Destination for Unforgettable Events
+            </motion.p>
+          </motion.div>
+
+          {/* Animated background elements */}
+          <motion.div 
+            className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full bg-gradient-to-r from-purple-300/30 via-pink-300/30 to-rose-300/30 dark:from-purple-900/30 dark:via-pink-900/30 dark:to-rose-900/30 blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.2, 0.4, 0.2]
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-20 relative">
+          <div className="container-custom">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="text-center">
+                    <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 flex items-center justify-center text-white mb-4">
+                      {stat.icon}
+                    </div>
+                    <h3 className="text-3xl font-bold mb-2 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-transparent bg-clip-text">
+                      {stat.number}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300">{stat.label}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Story Section */}
+        <section className="py-20 bg-white dark:bg-gray-800">
+          <div className="container-custom">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500">
+                  Our Story
+                </h2>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  Founded in 2025, Basudev Convention has been at the forefront of event management excellence. 
+                  What started as a small venue has grown into a premier destination for all types of events, 
+                  from intimate gatherings to grand celebrations.
+                </p>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  Our commitment to quality, attention to detail, and customer satisfaction has made us the 
+                  preferred choice for event organizers across the region. We believe in creating memorable 
+                  experiences that exceed expectations.
+                </p>
+                <div className="space-y-4">
+                  {features.map((feature, index) => (
+                    <motion.div
+                      key={index}
+                      className="flex items-start space-x-4"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <span className="text-3xl">{feature.icon}</span>
+                      <div>
+                        <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                        <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+              <motion.div
+                className="relative h-[500px] rounded-2xl overflow-hidden"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <Image
+                  src="/images/IMG_1090.jpg"
+                  alt="Our Story"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Info Section */}
+        <section className="py-20">
+          <div className="container-custom">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <motion.div
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 flex items-center justify-center text-white">
+                    <FaMapMarkerAlt className="text-xl" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">Location</h3>
+                    <p className="text-gray-600 dark:text-gray-300">plot no 120/2457, Lingipur chowk , Infront of Janani hospital, Bhubaneswar, Odisha 751002</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 flex items-center justify-center text-white">
+                    <FaPhone className="text-xl" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">Phone</h3>
+                    <p className="text-gray-600 dark:text-gray-300">+91 9861171001</p>
+                    <p className="text-gray-600 dark:text-gray-300">+91 7735014971</p>
+
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 flex items-center justify-center text-white">
+                    <FaEnvelope className="text-xl" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">Email</h3>
+                    <p className="text-gray-600 dark:text-gray-300">vasudevconvention25@gmail.com</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
       </div>
-      
-      {/* Our Story */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="heading-secondary text-[#8b0000] mb-2">Our Story</h2>
-              <h3 className="heading-tertiary mb-6">A Legacy of Excellence </h3>
-              
-              <p className="mb-4 text-gray-700">
-              Raj Palace & Convention was founded with a vision to create a premier venue for all types of events and celebrations. What started as a small banquet hall has now grown into one of the most prestigious convention centers in the region.
-              </p>
-              
-              <p className="mb-6 text-gray-700">
-              With a commitment to excellence, attention to detail, and personalized service, we have become the preferred choice for weddings, corporate events, and social gatherings. Over time, we have expanded our facilities, enhanced our amenities, and continuously modernized to offer an unparalleled experience for our guests.
-              </p>
-              
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center space-x-3">
-                  <FaCheck className="text-[#d4af37]" />
-                  <span>Founded in 2022 by the  family</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <FaCheck className="text-[#d4af37]" />
-                  <span>Expanded to 2 event halls in 2023</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <FaCheck className="text-[#d4af37]" />
-                  <span>Renovated and modernized in 2022</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <FaCheck className="text-[#d4af37]" />
-                  <span>Added luxury accommodation in 2022</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
-              <Image
-                src="/images/IMG_0296.jpg"
-                alt="Raj Palace History"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Mission & Values */}
-      <section className="section-padding bg-[#f8f0e3]">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="heading-secondary text-[#8b0000] mb-2">Our Mission & Values</h2>
-            <h3 className="heading-tertiary text-[#090381] mb-6">What Drives Us Every Day</h3>
-            <p className="max-w-3xl mx-auto text-[#8b0000]">
-              At Raj Palace & Convention, we are guided by our commitment to excellence and customer satisfaction.
-              Our mission and values define who we are and how we operate.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="bg-[#d4af37]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaUsers className="text-2xl text-[#d4af37]" />
-              </div>
-              <h4 className="text-xl text-[#090381]  font-bold mb-2">Customer First</h4>
-              <p className="text-gray-600">
-                We prioritize our customers' needs and strive to exceed their expectations in every interaction.
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="bg-[#d4af37]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaMedal className="text-2xl text-[#d4af37]" />
-              </div>
-              <h4 className="text-xl text-[#090381] font-bold mb-2">Excellence</h4>
-              <p className="text-gray-600">
-                We are committed to delivering excellence in every aspect of our service and facilities.
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="bg-[#d4af37]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaHandshake className="text-2xl text-[#d4af37]" />
-              </div>
-              <h4 className="text-xl text-[#090381] font-bold mb-2">Integrity</h4>
-              <p className="text-gray-600">
-                We conduct our business with honesty, transparency, and ethical practices.
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="bg-[#d4af37]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaCalendarAlt className="text-2xl text-[#d4af37]" />
-              </div>
-              <h4 className="text-xl text-[#090381] font-bold mb-2">Innovation</h4>
-              <p className="text-gray-600">
-                We continuously innovate and improve our services to stay ahead in the industry.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Facilities & Amenities Section (Replacing Team Section) */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="heading-secondary text-[#8b0000] mb-2">Our Facilities</h2>
-            <h3 className="heading-tertiary mb-6">Premium Amenities for Exceptional Events</h3>
-            <p className="max-w-3xl mx-auto text-gray-700">
-              Raj Palace & Convention offers state-of-the-art facilities and amenities to ensure your event is a remarkable success.
-              From spacious event halls to luxury accommodation, we have everything you need for a perfect occasion.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:transform hover:scale-105">
-              <div className="relative h-[250px]">
-                <Image
-                  src="/images/IMG_0311.jpg"
-                  alt="Event Halls"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div className="p-6">
-                    <h4 className="text-xl font-bold text-white mb-1">Elegant Event Halls</h4>
-                    <p className="text-[#d4af37]">For Every Occasion</p>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <p className="text-gray-600 mb-4">
-                  Our versatile event spaces can accommodate intimate gatherings and grand celebrations alike. With customizable layouts and modern amenities, our halls provide the perfect backdrop for your special occasion.
-                </p>
-                <ul className="space-y-2">
-                  <li className="flex items-center space-x-2">
-                    <FaCheck className="text-[#9805dc]" />
-                    <span className='text-[#9805dc]'>Capacity for up to 500 guests</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <FaCheck className="text-[#9805dc]" />
-                    <span className='text-[#9805dc]'>State-of-the-art sound and lighting</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <FaCheck className="text-[#9805dc]" />
-                    <span className='text-[#9805dc]'>Customizable floor plans</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:transform hover:scale-105">
-              <div className="relative h-[250px]">
-                <Image
-                  src="/images/IMG_0334.jpg"
-                  alt="Accommodation"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div className="p-6">
-                    <h4 className="text-xl font-bold text-white mb-1">Luxury Accommodation</h4>
-                    <p className="text-[#d4af37]">Comfort and Elegance</p>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <p className="text-gray-600 mb-4">
-                  Our well-appointed rooms and suites offer comfortable and elegant accommodations for your guests. With modern amenities and attentive service, we ensure a pleasant stay for everyone.
-                </p>
-                <ul className="space-y-2">
-                  <li className="flex items-center space-x-2">
-                    <FaBed className="text-[#d4af37]" />
-                    <span className='text-[#9805dc]'>Luxurious rooms and suites</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <FaWifi className="text-[#d4af37]" />
-                    <span className='text-[#9805dc]'>Complimentary high-speed WiFi</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <FaCheck className="text-[#d4af37]" />
-                    <span className='text-[#9805dc]'>24-hour concierge service</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:transform hover:scale-105">
-              <div className="relative h-[250px]">
-                <Image
-                  src="/images/IMG_0324.jpg"
-                  alt="Dining"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div className="p-6">
-                    <h4 className="text-xl font-bold text-white mb-1">Premium Amenities</h4>
-                    <p className="text-[#d4af37]">Enhancing Your Experience</p>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <p className="text-gray-600 mb-4">
-                  From exceptional dining options to convenient services, our comprehensive amenities ensure a seamless and enjoyable experience for you and your guests at Raj Palace & Convention.
-                </p>
-                <ul className="space-y-2">
-                  <li className="flex items-center space-x-2">
-                    <FaUtensils className="text-[#d4af37]" />
-                    <span className='text-[#9805dc]'>Exquisite catering options</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <FaParking className="text-[#d4af37]" />
-                    <span className='text-[#9805dc]'>Ample parking space</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <FaAccessibleIcon className="text-[#d4af37]" />
-                    <span className='text-[#9805dc]'>Accessibility features</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Testimonials */}
-      <section className="section-padding bg-[#0a0a0a] text-white">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="heading-secondary text-[#d4af37] mb-2">Testimonials</h2>
-            <h3 className="heading-tertiary mb-6 text-white">What Our Clients Say</h3>
-            <p className="max-w-3xl mx-auto text-gray-300">
-              Don't just take our word for it. Here's what some of our satisfied clients have to say about their experience with Raj Palace & Convention.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-[#1a1a1a] p-6 rounded-lg">
-              <div className="text-[#d4af37] text-4xl mb-4">"</div>
-              <p className="mb-6 text-gray-300">
-                We had our daughter's wedding at Raj Palace, and it was absolutely perfect. The staff was attentive, the venue was beautiful, and our guests couldn't stop raving about it.
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-[#d4af37] rounded-full mr-4"></div>
-                <div>
-                  <h5 className="font-bold">Anita & Suresh Patel</h5>
-                  <p className="text-[#d4af37]">Wedding</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-[#1a1a1a] p-6 rounded-lg">
-              <div className="text-[#d4af37] text-4xl mb-4">"</div>
-              <p className="mb-6 text-gray-300">
-                Our annual corporate conference was a huge success thanks to the team at Raj Palace. The facilities were top-notch, and the service was impeccable.
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-[#d4af37] rounded-full mr-4"></div>
-                <div>
-                  <h5 className="font-bold">Rahul Mehta</h5>
-                  <p className="text-[#d4af37]">Corporate Event</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-[#1a1a1a] p-6 rounded-lg">
-              <div className="text-[#d4af37] text-4xl mb-4">"</div>
-              <p className="mb-6 text-gray-300">
-                We hosted our silver jubilee celebration at Raj Palace, and it exceeded all our expectations. The attention to detail and personalized service made it a truly memorable event.
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-[#d4af37] rounded-full mr-4"></div>
-                <div>
-                  <h5 className="font-bold">Neha & Raj Malhotra</h5>
-                  <p className="text-[#d4af37]">Anniversary</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <Footer />
     </main>
   );
-} 
+};
+
+export default AboutPage; 

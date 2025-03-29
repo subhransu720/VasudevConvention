@@ -4,8 +4,6 @@ import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaBuilding, FaTree, FaBed, FaParking, FaUtensils, FaWifi, FaAirFreshener, FaChair } from 'react-icons/fa';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 // Define facility type
 interface Facility {
@@ -113,11 +111,9 @@ const VenueContent = () => {
   };
   
   return (
-    <>
-      <Navbar />
-      
+    <main className="pt-20">
       {/* Hero Section */}
-      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <Image
           src="/images/optimized/IMG_0307.jpg"
           alt="Raj Palace Venue - Luxury Event Space"
@@ -149,7 +145,7 @@ const VenueContent = () => {
       </section>
       
       {/* Facilities Section */}
-      <section className="py-16 bg-[#f8f5ff]" ref={containerRef}>
+      <section className="py-20">
         <div className="container-custom">
           <motion.div 
             className="text-center mb-12"
@@ -415,9 +411,7 @@ const VenueContent = () => {
           </motion.div>
         </div>
       </section>
-      
-      <Footer />
-    </>
+    </main>
   );
 };
 

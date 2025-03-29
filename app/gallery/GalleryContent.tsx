@@ -1,104 +1,116 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaSearch, FaTimes, FaArrowRight, FaArrowLeft, FaMapMarkerAlt, FaGem, FaUtensils, FaGlassCheers, FaCalendarAlt } from 'react-icons/fa';
-import { MdOutline360 } from 'react-icons/md';
-import { IoMdCompass } from 'react-icons/io';
-import { BiMap } from 'react-icons/bi';
-import { GiCrystalBall, GiPartyPopper } from 'react-icons/gi';
+import Link from 'next/link';
+
+// Dynamically import icons
+const FaSearch = dynamic(() => import('react-icons/fa').then(mod => mod.FaSearch), { ssr: false });
+const FaTimes = dynamic(() => import('react-icons/fa').then(mod => mod.FaTimes), { ssr: false });
+const FaArrowRight = dynamic(() => import('react-icons/fa').then(mod => mod.FaArrowRight), { ssr: false });
+const FaArrowLeft = dynamic(() => import('react-icons/fa').then(mod => mod.FaArrowLeft), { ssr: false });
+const FaMapMarkerAlt = dynamic(() => import('react-icons/fa').then(mod => mod.FaMapMarkerAlt), { ssr: false });
+const FaGem = dynamic(() => import('react-icons/fa').then(mod => mod.FaGem), { ssr: false });
+const FaUtensils = dynamic(() => import('react-icons/fa').then(mod => mod.FaUtensils), { ssr: false });
+const FaGlassCheers = dynamic(() => import('react-icons/fa').then(mod => mod.FaGlassCheers), { ssr: false });
+const FaCalendarAlt = dynamic(() => import('react-icons/fa').then(mod => mod.FaCalendarAlt), { ssr: false });
+const MdOutline360 = dynamic(() => import('react-icons/md').then(mod => mod.MdOutline360), { ssr: false });
+const IoMdCompass = dynamic(() => import('react-icons/io').then(mod => mod.IoMdCompass), { ssr: false });
+const BiMap = dynamic(() => import('react-icons/bi').then(mod => mod.BiMap), { ssr: false });
+const GiCrystalBall = dynamic(() => import('react-icons/gi').then(mod => mod.GiCrystalBall), { ssr: false });
+const GiPartyPopper = dynamic(() => import('react-icons/gi').then(mod => mod.GiPartyPopper), { ssr: false });
+
 const galleryImages = [
   {
     id: 1,
-    src: '/images/weddingBedi.png',
+    src: '/images/stage1.jpg',
     category: 'Wedding',
-    title: 'Elegant Wedding Setup',
+    title: 'Marriage Stage Decoration',
   },
   {
     id: 2,
-    src: '/images/Corporate2.png',
-    category: 'Corporate',
-    title: 'Business Conference',
+    src: '/images/Haldi.png',
+    category: 'Haldi',
+    title: 'Haldi Ceremony',
   },
   {
     id: 3,
-    src: '/images/birthday.png',
-    category: 'Party',
-    title: 'Birthday Celebration',
+    src: '/images/Mehendi.png',
+    category: 'Mehendi',
+    title: 'Mehendi Ceremony',
   },
   {
     id: 4,
-    src: '/images/wedding_stage.jpg',
+    src: '/images/image copy 2.png',
     category: 'Wedding',
     title: 'Wedding Reception',
   },
   {
     id: 5,
-    src: '/images/IMG_0340.jpg',
-    category: 'Outside View',
-    title: 'Outside View',
+    src: '/images/birthdayorg.png',
+    category: 'Birthday Party',
+    title: 'Birthday Party',
   },
   {
     id: 6,
-    src: '/images/Lawn.jpg',
-    category: 'Lawn',
-    title: 'Large Lawn Area',
+    src: '/images/Img_1032.jpg',
+    category: 'Hall',
+    title: 'Hall',
   },
   {
     id: 7,
-    src: '/images/IMG_0324.jpg',
+    src: '/images/IMG_1036.jpg',
     category: 'Venue',
     title: 'Second Hall',
   },
   {
     id: 8,
-    src: '/images/Kitchen.jpg',
-    category: 'Kitchen',
-    title: 'Large Kitchen Area',
+    src: '/images/IMG_1017.jpg',
+    category: 'dinner area ',
+    title: 'Large dinner Area',
   },
   {
     id: 9,
-    src: '/images/parking.jpg',
-    category: 'Parking',
-    title: 'Large Area Parking',
+    src: '/images/elevate.png',
+    category: 'Elevate',
+    title: 'Elevate',
   },
   {
     id: 10,
-    src: '/images/rooms.jpg',
+    src: '/images/IMG_1074.jpg',
     category: 'Room',
     title: 'Luxurious Room ',
   },
   {
     id: 11,
-    src: '/images/IMG_0311.jpg',
+    src: '/images/IMG_1057.jpg',
     category: 'Venue',
     title: 'Main Hall',
   },
   {
     id: 12,
-    src: '/images/stage2.jpeg',
+    src: '/images/image copy.png',
     category: 'Venue',
     title: 'stage Decoration',
   },
   {
     id: 13,
-    src: '/images/wedding_stage.jpg',
+    src: '/images/image copy 3.png',
     category: 'Venue',
     title: 'Hall Decoration',
   },
   {
     id: 14,
-    src: '/images/entrygate.jpeg',
+    src: '/images/IMG_1086.jpg',
     category: 'Venue',
     title: 'Entrance Decoration',
   },
   {
     id: 15,
-    src: '/images/bedi2.jpg',
-    category: 'Hall',
-    title: 'bedi decoration',
+    src: '/images/image copy 4.png',
+    category: 'Stage',
+    title: 'stage decoration',
   },
 ];
 
@@ -159,16 +171,16 @@ export default function GalleryContent() {
 
   return (
     <main>
-      <Navbar />
-      
       {/* Hero Section */}
       <div className="relative h-[50vh] md:h-[60vh] w-full">
         <Image
-          src="/images/IMG_0324.jpg"
-          alt="Raj Palace Gallery"
+          src="/images/IMG_1057.jpg"
+          alt="Vasudev Convention Gallery"
           fill
           className="object-cover"
           priority
+          sizes="100vw"
+          quality={85}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#4b0082]/80 via-[#6a0dad]/70 to-[#8a2be2]/60 flex items-center justify-center">
           <motion.div 
@@ -249,7 +261,7 @@ export default function GalleryContent() {
               }}>Photo Gallery</h2>
               <h3 className="heading-tertiary mb-6 text-white">Glimpses of Our Memorable Events</h3>
               <p className="max-w-3xl mx-auto text-gray-300 mb-8">
-                Browse through our gallery to see the beautiful events we've hosted at Raj Palace & Convention.
+                Browse through our gallery to see the beautiful events we've hosted at Vasudev Convention.
                 From weddings to corporate events, we create magical experiences for all occasions.
               </p>
               <motion.div
@@ -312,7 +324,10 @@ export default function GalleryContent() {
                     src={image.src}
                     alt={image.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    quality={75}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a]/90 via-[#4b0082]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                     <h4 className="text-[#d4af37] text-xl font-bold">{image.title}</h4>
@@ -354,7 +369,7 @@ export default function GalleryContent() {
               <h3 className="heading-tertiary mb-6 text-white">Explore Our Venue From Anywhere</h3>
               <p className="max-w-3xl mx-auto text-gray-300">
                 Take a virtual journey through our premium spaces and immersive environments.
-                Experience the grandeur of Raj Palace & Convention before your visit.
+                Experience the grandeur of Vasudev Convention before your visit.
               </p>
               <motion.div
                 className="h-1 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent rounded-full mx-auto mt-6 w-32"
@@ -394,10 +409,13 @@ export default function GalleryContent() {
                 }}
               >
                 <Image
-                  src="/images/IMG_0311.jpg"
+                  src="/images/IMG_1057.jpg"
                   alt="Grand Ballroom"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  quality={75}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a]/90 via-[#4b0082]/60 to-transparent flex flex-col justify-end p-6">
                   <MdOutline360 className="text-4xl text-[#d4af37] mb-2" />
@@ -423,10 +441,13 @@ export default function GalleryContent() {
                 }}
               >
                 <Image
-                  src="/images/IMG_0334.jpg"
+                  src="/images/IMG_1079.jpg"
                   alt="Luxury Suites"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  quality={75}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a]/90 via-[#4b0082]/60 to-transparent flex flex-col justify-end p-6">
                   <MdOutline360 className="text-4xl text-[#d4af37] mb-2" />
@@ -452,10 +473,13 @@ export default function GalleryContent() {
                 }}
               >
                 <Image
-                  src="/images/IMG_0324.jpg"
-                  alt="Outdoor Gardens"
+                  src="/images/IMG_1059.jpg"
+                  alt="Hall"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  quality={75}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a]/90 via-[#4b0082]/60 to-transparent flex flex-col justify-end p-6">
                   <MdOutline360 className="text-4xl text-[#d4af37] mb-2" />
@@ -583,24 +607,26 @@ export default function GalleryContent() {
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               textShadow: "0 0 15px rgba(212, 175, 55, 0.3)"
-            }}>Want to Host Your Event at Raj Palace?</h2>
+            }}>Want to Host Your Event at Vasudev Convention?</h2>
             <p className="max-w-3xl mx-auto mb-8 text-white/90">
-              Contact us today to book your event and create your own beautiful memories at Raj Palace & Convention.
+              Contact us today to book your event and create your own beautiful memories at Vasudev Convention.
             </p>
-            <motion.button 
-              className="px-8 py-4 rounded-full bg-[#d4af37] text-[#4b0082] font-bold text-lg shadow-lg shadow-[#d4af37]/30 relative overflow-hidden group"
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 0 25px rgba(212, 175, 55, 0.5)"
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="relative z-10">Contact Us Now</span>
-              <motion.span 
-                className="absolute inset-0 bg-gradient-to-r from-[#f5e7a3] to-[#d4af37] opacity-0 group-hover:opacity-100"
-                transition={{ duration: 0.3 }}
-              />
-            </motion.button>
+            <Link href="/contact" prefetch={true}>
+              <motion.button 
+                className="px-8 py-4 rounded-full bg-[#d4af37] text-[#4b0082] font-bold text-lg shadow-lg shadow-[#d4af37]/30 relative overflow-hidden group"
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 0 25px rgba(212, 175, 55, 0.5)"
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="relative z-10">Contact Us Now</span>
+                <motion.span 
+                  className="absolute inset-0 bg-gradient-to-r from-[#f5e7a3] to-[#d4af37] opacity-0 group-hover:opacity-100"
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -625,7 +651,10 @@ export default function GalleryContent() {
                 src={selectedImage.src}
                 alt={selectedImage.title}
                 fill
+                sizes="100vw"
                 className="object-contain"
+                quality={90}
+                priority
               />
               <motion.button
                 className="absolute top-4 right-4 bg-[#d4af37] text-[#0a0a1a] p-3 rounded-full border border-white/30"
@@ -676,8 +705,6 @@ export default function GalleryContent() {
           </motion.div>
         )}
       </AnimatePresence>
-      
-      <Footer />
     </main>
   );
 } 
