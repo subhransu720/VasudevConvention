@@ -31,7 +31,7 @@ const services: Service[] = [
     title: 'Wedding Ceremonies',
     description: 'Make your special day truly memorable with our elegant wedding venues and comprehensive services.',
     icon: <FaHeart className="text-4xl text-white" />,
-    image: '/images/IMG_1051.jpg',
+    image: '/images/IMG_1052.jpg',
     color: 'from-yellow-400 via-pink-500 to-purple-500'
   },
   {

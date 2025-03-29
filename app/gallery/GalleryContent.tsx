@@ -4,10 +4,9 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { FaSearch, FaTimes } from 'react-icons/fa';
 
 // Dynamically import icons
-const FaSearch = dynamic(() => import('react-icons/fa').then(mod => mod.FaSearch), { ssr: false });
-const FaTimes = dynamic(() => import('react-icons/fa').then(mod => mod.FaTimes), { ssr: false });
 const FaArrowRight = dynamic(() => import('react-icons/fa').then(mod => mod.FaArrowRight), { ssr: false });
 const FaArrowLeft = dynamic(() => import('react-icons/fa').then(mod => mod.FaArrowLeft), { ssr: false });
 const FaMapMarkerAlt = dynamic(() => import('react-icons/fa').then(mod => mod.FaMapMarkerAlt), { ssr: false });
@@ -24,99 +23,193 @@ const GiPartyPopper = dynamic(() => import('react-icons/gi').then(mod => mod.GiP
 const galleryImages = [
   {
     id: 1,
-    src: '/images/stage1.jpg',
+    src: '/images/optimized_IMG_1057.jpg',
     category: 'Wedding',
     title: 'Marriage Stage Decoration',
   },
   {
     id: 2,
-    src: '/images/Haldi.png',
+    src: '/images/optimized_Haldi.png',
     category: 'Haldi',
     title: 'Haldi Ceremony',
   },
   {
     id: 3,
-    src: '/images/Mehendi.png',
+    src: '/images/optimized_Mehendi.png',
     category: 'Mehendi',
     title: 'Mehendi Ceremony',
   },
   {
     id: 4,
-    src: '/images/image copy 2.png',
+    src: '/images/optimized_image copy 2.png',
     category: 'Wedding',
     title: 'Wedding Reception',
   },
   {
     id: 5,
-    src: '/images/birthdayorg.png',
+    src: '/images/optimized_birthdayorg.png',
     category: 'Birthday Party',
     title: 'Birthday Party',
   },
   {
     id: 6,
-    src: '/images/Img_1032.jpg',
+    src: '/images/optimized_IMG_1032.jpg',
     category: 'Hall',
     title: 'Hall',
   },
   {
     id: 7,
-    src: '/images/IMG_1036.jpg',
+    src: '/images/optimized_IMG_1036.jpg',
     category: 'Venue',
     title: 'Second Hall',
   },
   {
     id: 8,
-    src: '/images/IMG_1017.jpg',
+    src: '/images/optimized_IMG_1017.jpg',
     category: 'dinner area ',
     title: 'Large dinner Area',
   },
   {
     id: 9,
-    src: '/images/elevate.png',
+    src: '/images/optimized_elevate.png',
     category: 'Elevate',
     title: 'Elevate',
   },
   {
     id: 10,
-    src: '/images/IMG_1074.jpg',
+    src: '/images/optimized_IMG_1074.jpg',
     category: 'Room',
     title: 'Luxurious Room ',
   },
   {
     id: 11,
-    src: '/images/IMG_1057.jpg',
+    src: '/images/optimized_IMG_1057.jpg',
     category: 'Venue',
     title: 'Main Hall',
   },
   {
     id: 12,
-    src: '/images/image copy.png',
+    src: '/images/optimized_image copy.png',
     category: 'Venue',
     title: 'stage Decoration',
   },
   {
     id: 13,
-    src: '/images/image copy 3.png',
+    src: '/images/optimized_image copy 3.png',
     category: 'Venue',
     title: 'Hall Decoration',
   },
   {
     id: 14,
-    src: '/images/IMG_1086.jpg',
+    src: '/images/optimized_IMG_1086.jpg',
     category: 'Venue',
     title: 'Entrance Decoration',
   },
   {
     id: 15,
-    src: '/images/image copy 4.png',
+    src: '/images/optimized_image copy 4.png',
     category: 'Stage',
     title: 'stage decoration',
   },
+  {
+    id: 16,
+    src: '/images/optimized_IMG_1082.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 17,
+    src: '/images/optimized_IMG_1090.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 18,
+    src: '/images/optimized_IMG_1093.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 19,
+    src: '/images/optimized_IMG_1101.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 20,
+    src: '/images/optimized_IMG_1021.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 21,
+    src: '/images/optimized_IMG_1022.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 22,
+    src: '/images/optimized_IMG_1027.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 23,
+    src: '/images/optimized_IMG_1029.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 24,
+    src: '/images/optimized_IMG_1044.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 25,
+    src: '/images/optimized_IMG_1052.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 26,
+    src: '/images/optimized_IMG_1056.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 27,
+    src: '/images/optimized_IMG_1058.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 28,
+    src: '/images/optimized_IMG_1062.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 29,
+    src: '/images/optimized_IMG_1079.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
+  {
+    id: 30,
+    src: '/images/optimized_IMG_1088.jpg',
+    category: 'Venue',
+    title: 'Hall Decoration',
+  },
 ];
 
+// Fix Set iteration by converting to array
+const categories = ['All', ...Array.from(new Set(galleryImages.map(img => img.category)))];
+
 export default function GalleryContent() {
-  const [selectedImage, setSelectedImage] = useState<null | typeof galleryImages[0]>(null);
-  const [filter, setFilter] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isClient, setIsClient] = useState(false);
 
@@ -124,9 +217,12 @@ export default function GalleryContent() {
     setIsClient(true);
   }, []);
 
-  const filteredImages = filter === 'All' 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === filter);
+  const filteredImages = galleryImages.filter(img => {
+    const matchesCategory = selectedCategory === 'All' || img.category === selectedCategory;
+    const matchesSearch = img.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         img.category.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   const handleImageClick = (image: typeof galleryImages[0]) => {
     setSelectedImage(image);
@@ -174,7 +270,7 @@ export default function GalleryContent() {
       {/* Hero Section */}
       <div className="relative h-[50vh] md:h-[60vh] w-full">
         <Image
-          src="/images/IMG_1057.jpg"
+          src="/images/optimized_IMG_1057.jpg"
           alt="Vasudev Convention Gallery"
           fill
           className="object-cover"
@@ -243,112 +339,77 @@ export default function GalleryContent() {
         )}
       </div>
       
-      {/* Gallery Section */}
-      <section className="section-padding bg-gradient-to-b from-[#0a0a1a] to-[#1a1a3a]">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="heading-secondary mb-2" style={{ 
-                background: "linear-gradient(to right, #d4af37, #f5e7a3, #d4af37)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                textShadow: "0 0 10px rgba(212, 175, 55, 0.3)"
-              }}>Photo Gallery</h2>
-              <h3 className="heading-tertiary mb-6 text-white">Glimpses of Our Memorable Events</h3>
-              <p className="max-w-3xl mx-auto text-gray-300 mb-8">
-                Browse through our gallery to see the beautiful events we've hosted at Vasudev Convention.
-                From weddings to corporate events, we create magical experiences for all occasions.
-              </p>
-              <motion.div
-                className="h-1 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent rounded-full mx-auto mt-6 mb-12 w-32"
-                initial={{ width: 0, opacity: 0 }}
-                whileInView={{ width: "120px", opacity: 1 }}
-                transition={{ duration: 1 }}
-                viewport={{ once: true }}
-              />
-
-              {/* Filter Buttons */}
-              <div className="flex flex-wrap justify-center gap-4 mb-12">
-                {['All', 'Wedding', 'Corporate', 'Party', 'Venue'].map((category) => (
-                  <motion.button
-                    key={category}
-                    onClick={() => setFilter(category)}
-                    className={`px-6 py-2 rounded-full transition-all ${
-                      filter === category
-                        ? 'bg-gradient-to-r from-[#d4af37] to-[#f5e7a3] text-[#4b0082] font-bold shadow-lg shadow-[#d4af37]/30'
-                        : 'bg-[#1a1a3a] border border-[#d4af37]/30 text-white hover:border-[#d4af37] shadow-md'
-                    }`}
-                    whileHover={{ 
-                      scale: 1.05, 
-                      boxShadow: "0 0 15px rgba(212, 175, 55, 0.3)" 
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {category}
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
+      {/* Search and Filter Section */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8 space-y-4">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search images..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-4 py-2 pl-10 bg-white/10 border border-purple-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            />
+            <FaSearch className="absolute left-3 top-3 text-gray-400" />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-3 text-gray-400 hover:text-white"
+              >
+                <FaTimes />
+              </button>
+            )}
           </div>
 
-          {/* Gallery Grid */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-          >
-            <AnimatePresence>
-              {filteredImages.map((image) => (
-                <motion.div
-                  key={image.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.5 }}
-                  className="relative group overflow-hidden rounded-lg shadow-xl h-[300px] cursor-pointer border border-[#d4af37]/10 hover:border-[#d4af37]/40"
-                  onClick={() => handleImageClick(image)}
-                  whileHover={{ 
-                    y: -10,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.4), 0 0 15px rgba(212, 175, 55, 0.3)"
-                  }}
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    quality={75}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a]/90 via-[#4b0082]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <h4 className="text-[#d4af37] text-xl font-bold">{image.title}</h4>
-                    <p className="text-white">{image.category}</p>
-                    <motion.button 
-                      className="absolute top-4 right-4 bg-[#d4af37] text-[#0a0a1a] p-2 rounded-full border border-white/30"
-                      whileHover={{ 
-                        scale: 1.1, 
-                        boxShadow: "0 0 15px rgba(212, 175, 55, 0.7)" 
-                      }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <FaSearch />
-                    </motion.button>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+          <div className="flex flex-wrap gap-2">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  selectedCategory === category
+                    ? 'bg-purple-600 text-white'
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
-      </section>
+
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <AnimatePresence>
+            {filteredImages.map((image) => (
+              <motion.div
+                key={image.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="group relative aspect-square rounded-lg overflow-hidden cursor-pointer"
+                onClick={() => handleImageClick(image)}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  quality={75}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a]/90 via-[#4b0082]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <h3 className="text-xl font-bold text-white mb-2">{image.title}</h3>
+                  <p className="text-purple-300">{image.category}</p>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </div>
       
       {/* Virtual Tour Experience (Replacing Video Gallery) */}
       <section className="section-padding bg-gradient-to-b from-[#1a1a3a] to-[#0a0a1a]">
@@ -409,7 +470,7 @@ export default function GalleryContent() {
                 }}
               >
                 <Image
-                  src="/images/IMG_1057.jpg"
+                  src="/images/optimized_IMG_1057.jpg"
                   alt="Grand Ballroom"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -441,7 +502,7 @@ export default function GalleryContent() {
                 }}
               >
                 <Image
-                  src="/images/IMG_1079.jpg"
+                  src="/images/optimized_IMG_1079.jpg"
                   alt="Luxury Suites"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -473,7 +534,7 @@ export default function GalleryContent() {
                 }}
               >
                 <Image
-                  src="/images/IMG_1059.jpg"
+                  src="/images/optimized_IMG_1059.jpg"
                   alt="Hall"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

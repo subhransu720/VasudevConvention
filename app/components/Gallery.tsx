@@ -27,7 +27,7 @@ const galleryImages = [
   },
   {
     id: 4,
-    src: '/images/IMG_1051.jpg',
+    src: '/images/IMG_1052.jpg',
     category: 'Wedding',
     title: 'Wedding Reception',
   },
@@ -45,13 +45,13 @@ const galleryImages = [
   },
   {
     id: 7,
-    src: '/images/IMG_1086.jpg',
+    src: '/images/IMG_1088.jpg',
     category: 'Entrance',
     title: 'Elegant Entrance',
   },
   {
     id: 8,
-    src: '/images/IMG_1032.jpg',
+    src: '/images/IMG_1036.jpg',
     category: 'Party Hall',
     title: 'HALL',
   },
