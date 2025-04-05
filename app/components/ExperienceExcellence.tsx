@@ -40,25 +40,25 @@ const stats = [
 
 const testimonials = [
   {
-    name: "Priya Sharma",
-    role: "Wedding Planner",
-    image: "/images/testimonial1.jpg",
-    text: "The attention to detail and professional service made our client's wedding truly magical.",
-    rating: 5
+    name: "John Doe",
+    role: "Wedding Client",
+    text: "The venue was absolutely perfect for our wedding. The staff was incredibly helpful and made our special day even more memorable.",
+    rating: 5,
+    image: "/images/optimized_IMG_1012.jpg"
   },
   {
-    name: "Rajesh Kumar",
-    role: "Corporate Event Manager",
-    image: "/images/testimonial2.jpg",
-    text: "The technical support and catering services are top-notch. Perfect for our annual meetings.",
-    rating: 5
+    name: "Jane Smith",
+    role: "Corporate Event Organizer",
+    text: "We hosted our annual conference here and everything was flawless. The facilities are top-notch and the service is exceptional.",
+    rating: 5,
+    image: "/images/optimized_IMG_1013.jpg"
   },
   {
-    name: "Anjali Patel",
-    role: "Event Coordinator",
-    image: "/images/testimonial3.jpg",
-    text: "The team's expertise and dedication ensure every event is executed flawlessly.",
-    rating: 5
+    name: "Mike Johnson",
+    role: "Birthday Party Host",
+    text: "Celebrated my daughter's birthday here and it was amazing! The space was perfect and the staff went above and beyond to make it special.",
+    rating: 5,
+    image: "/images/optimized_IMG_1017.jpg"
   }
 ];
 

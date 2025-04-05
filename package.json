@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "vasudev-convention",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,9 +10,8 @@
     "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
-    "critters": "^0.0.23",
     "framer-motion": "^11.0.3",
-    "next": "^14.2.25",
+    "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1"
